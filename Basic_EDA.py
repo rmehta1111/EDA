@@ -1,9 +1,10 @@
+#Importing initial libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-#Importing heatmap library
+#Importing heatmap library and pandas-profiling
 import calmap
 from pandas_profiling import ProfileReport
 
