@@ -46,5 +46,11 @@ sns.distplot(df['Rating'])
 plt.axvline(x=np.mean(df['Rating']),c='red',ls='--')
 
 # Q2) Do aggregate sales numbers differ by much between branches?
+sns.countplot(df['Branch'])
 
+#To get the count using a method
+df['Branch'].value_counts()
+
+#For checking different channels for payments
+sns.countplot(df['Payment'])
 
