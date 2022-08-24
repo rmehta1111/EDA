@@ -63,4 +63,4 @@ px.scatter_matrix(cancer_df,dimensions=['mean texture','mean radius','mean perim
 
 ## Interactive violin plot ##
 #This is an extension of box plot with rotated kernel density added on both sides of the plot
-px.violin(cancer_df,y='mean radius',
+px.violin(cancer_df,y='mean radius',points='all',box=True,color='target')
