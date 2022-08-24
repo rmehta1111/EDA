@@ -137,6 +137,5 @@ round(np.corrcoef(df['gross income'],df['Rating'])[1][0],2)
 np.round(df.corr(),2)
 
 #To visualize and get insights from correlation
-sns.heatmap(np.round(df.corr(),2))
+sns.heatmap(np.round(df.corr(),2),annot=True)
 #Black areas signify that the correlation is not there- this can be used to say a lot with certainity
-
