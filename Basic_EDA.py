@@ -85,4 +85,58 @@ df.groupby(df.index).mean()
 # The index of this grouping and 'gross income' would be used as x and y respectively for the lineplot 
 sns.lineplot( x= df.groupby(df.index).mean().index,
               y= df.groupby(df.index).mean()['gross income'])
+#The data might be varyng around the same mean- horizontal trend of the wave-
+# Some days the gross income might be large and some days low but as such there might not be a time trend for the same- Might differ for longer period of data
+
+#To plot all the bivariate plots- Can be used for small dataset as this is time consuming
+sns.pairplot(df)
+
+##  Duplicate rows and missing values ##
+
+#To check how many rows are duplicated
+df.duplicated().sum()
+
+#To find duplicate rows
+df[df.duplicated()==True]
+
+#To drop duplicate rows- Permanent change in the dataframe itself
+df.drop_duplicates(inplace=True)
+
+#To check how many rows have missing values- columnwise
+df.isna().sum()
+
+#If we want the proportion of missing values we divide it with the length of dataframe
+df.isna().sum()/len(df)
+
+#To visualize these missing values using heatmap
+sns.heatmap(df.isnull(),cbar=False)
+#Can also use isna() in place of isnull()- cbar False makes it cleaner by removing the heat bar legend
+
+#How to deal with missing values- can use fillna on zeros directly on df.fillna(0)
+#Better method would be imputing with mean
+df.fillna(df.mean(),inplace=True)
+
+#This will fill all the numeric columns- can check heatmap to verify this
+#For categorical columns- we fill them next
+df.fillna(df.mode().iloc[0],inplace=True)
+
+#iloc[0] is required as .mode() gives a dataframe with the top row as mode and remaining values
+#Can verify filling of all values using heatmap
+
+#For a small dataset- we can use the pandas profiling library to get stats and analysis
+dataset = pd.read_csv('Enter csv name.csv')
+prof = ProfileReport(dataset)
+prof
+
+## Correlation Analysis
+
+#Get correlation between 2 numeric columns
+round(np.corrcoef(df['gross income'],df['Rating'])[1][0],2)
+
+#For gettting pairwise correlation between all the numeric columns
+np.round(df.corr(),2)
+
+#To visualize and get insights from correlation
+sns.heatmap(np.round(df.corr(),2))
+#Black areas signify that the correlation is not there- this can be used to say a lot with certainity
 
