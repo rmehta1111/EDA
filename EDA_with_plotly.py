@@ -51,4 +51,13 @@ px.histogram(cancer_df,x='mean radius',color='target',marginal='violin',nbins=60
 #It is a 2D visualization of a histogram
 px.density_heatmap(cancer_df,x='mean radius',y='mean texture')
 
-## 
+## Scatter-plot matrix ##
+px.scatter_matrix(university_df,height=1200,width=1200)
+
+#To make scatter matrix for selected columns in a dataset- add dimensions parameter
+px.scatter_matrix(cancer_df,dimensions=['mean texture','mean radius','mean perimeter'])
+
+#To add color to this scatter matrix for selected columns in a dataset- add color parameter as before
+px.scatter_matrix(cancer_df,dimensions=['mean texture','mean radius','mean perimeter'],color='target')
+
+## Interactive violin plot ##
