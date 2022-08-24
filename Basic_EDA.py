@@ -54,3 +54,35 @@ df['Branch'].value_counts()
 #For checking different channels for payments
 sns.countplot(df['Payment'])
 
+
+## Bivariate Analysis ##
+
+# Q3) Is there a relationship between Rating and Gross income?
+#We can make a scatterplot between 2 variables to see the distribution of one variable wrt another variable
+#x axis parameter comes first
+sns.scatterplot(df['Rating'],df['gross income'])
+
+#To check the dependency on the variable we can make a regression plot which will add a regression line on this scatterplot
+sns.regplot(df['Rating'],df['gross income'])
+#If the line is flat(horizontal), their is no dependency of rating on gross income
+
+#To compare different categories based on another variable(for ex- Ratings dependency on store branch) we can use boxplot
+# Is there a relationship between Branch and gross income?
+sns.boxplot(x=df['Branch'],y=df['gross income'])
+#Here we can compare the line inside the box i.e. median and see if they are closer- In that case, there is no dependency of gross income on Branch
+
+# Is there a relationship between Gender and gross income?
+sns.boxplot(x=df['Gender'],y=df['gross income'])
+#Can check median and 75th percentile (Upper line to see at 75th percentile do women spend more than men or vice versa)
+
+# Q4) Is there a noticable time trend in gross income?
+#We can use lineplot for this
+#But here to make a lineplot we need single row for every date
+#For that- we roll-up data on the date (index here) using mean of all values on that date using groupby
+
+df.groupby(df.index).mean()
+
+# The index of this grouping and 'gross income' would be used as x and y respectively for the lineplot 
+sns.lineplot( x= df.groupby(df.index).mean().index,
+              y= df.groupby(df.index).mean()['gross income'])
+
