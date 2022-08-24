@@ -59,5 +59,8 @@ px.scatter_matrix(cancer_df,dimensions=['mean texture','mean radius','mean perim
 
 #To add color to this scatter matrix for selected columns in a dataset- add color parameter as before
 px.scatter_matrix(cancer_df,dimensions=['mean texture','mean radius','mean perimeter'],color='target')
+#Very good visualization to be used in cluster analysis etc.
 
 ## Interactive violin plot ##
+#This is an extension of box plot with rotated kernel density added on both sides of the plot
+px.violin(cancer_df,y='mean radius',
