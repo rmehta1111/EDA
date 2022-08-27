@@ -45,6 +45,10 @@ sns.distplot(df['Rating'])
 #To overlay mean of distribution on the plot
 plt.axvline(x=np.mean(df['Rating']),c='red',ls='--')
 
+#To overlay percentile lines-25-75
+plt.axvline(x=np.percentile(df['Rating'],25),c='green',ls='--')
+plt.axvline(x=np.percentile(df['Rating'],75),c='green',ls='--')
+
 # Q2) Do aggregate sales numbers differ by much between branches?
 sns.countplot(df['Branch'])
 
