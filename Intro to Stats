@@ -3,4 +3,11 @@
 #Numerical-Categorical Data
 #Numerical- Continous, Discrete Data
 #Categorical- Nominal, Ordinal(Ordered) data
-#Plots depend on summary stats- Scatter plots make sense for Numerical data- Histograms and Bar plots make sense for Categorical Data
+#Plots depend on summary stats- Scatter plots make sense for Numerical data- Bar plots make sense for Categorical Data
+
+#Measures of center
+Mean-Median-Mode
+import numpy as np
+np.mean(df['sleeptime'])
+
+np.median(df['sleeptime']). Can also be calculated by df['sleeptime'].sort_values.iloc[41] for 83 entries
